@@ -6,7 +6,8 @@ Criado por Erasmo Cardodo
 #include <string.h>
 #include <cstdlib>
 //variaveis universais
-std::string hdant , hdnova;
+std::string hdant , hdnova, veloc;
+int opcao, confirma;
 
 //funçoes
 void menu(){
@@ -30,28 +31,50 @@ void organ(){
     std::cin >> hdant;
     std::cout << " Coloque a letra da hd de destino !!"<<std::endl;
     std::cin >> hdnova;
+    do{
+    std::cout << "--------------------- Velocidade ------------- "<<std::endl;
+    std::cout << "| 1) PENDRIVER                                |"<<std::endl;
+    std::cout << "| 2) HD                                       |"<<std::endl;
+    std::cout << "| 3) SSD                                      |"<<std::endl;
+    std::cout << "-----------------------------------------------"<<std::endl;
+    std::cin >> opcao;
+
+        switch (opcao){
+            case 1 :
+                veloc = "50M";
+                break;
+            case 2 :
+                veloc = "500M";
+                break;
+            case 3 :
+                veloc = "1G";
+                break;
+            default :
+                system("clear");
+                std::cout << "      -----------Opção Invalida-------------    "<<std::endl;
+                std::cout << "      -----------Tente novamente------------    "<<std::endl;
+        }
+    }while (opcao <1 || opcao > 3);
 }
-// executa comando dd para clonar
+    // executa comando dd para clonar
 void clonar(){
 //   adaptação para system aceitar string em vez de char no system
-    std::string clon = "sudo dd if=/dev/" +hdant+ " of=/dev/"+hdnova+ " bs=200M conv=noerror,sync status=progress";
+    std::string clon = "sudo dd if=/dev/" +hdant+ " of=/dev/"+hdnova+ " bs="+veloc+" conv=noerror,sync status=progress";
     std::cout<< clon;
     std::system(clon.c_str());
     std::cout<<"\n";
     std::cout<<"    ------------    FIM!!!    ------------------      ";
-
 }
 
 // Verificação visual se esta tudo correto antes de clonar
 void confir(){
-    int confirma;
+
     std::cout <<"HD origem  : "<<hdant<<std::endl;
     std::cout <<"HD destino : "<<hdnova<<std::endl;
-    std::cout <<"sudo dd if=/dev/"<<hdant<<" of=/dev/"<<hdnova<<"  bs=1M conv = notrunc, noerro "<<std::endl;
+    std::cout <<"sudo dd if=/dev/"<<hdant<<" of=/dev/"<<hdnova<<"  bs="<<veloc<<" conv=notrunc, noerro "<<std::endl;
     std::cout <<"Confirma ?  1 para sim !!! "<<std::endl;
     std::cin >>confirma;
-
-    if (confirma == 1){
+      if (confirma == 1){
             system("clear");
             clonar();
 
@@ -59,8 +82,8 @@ void confir(){
         system("clear");
         system("./hd");
         };
-
 }
+
 
 // funções
 int main(){
