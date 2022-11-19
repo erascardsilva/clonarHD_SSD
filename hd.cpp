@@ -41,7 +41,7 @@ void organ(){
 
         switch (opcao){
             case 1 :
-                veloc = "50M";
+                veloc = "10M";
                 break;
             case 2 :
                 veloc = "500M";
@@ -59,7 +59,7 @@ void organ(){
     // executa comando dd para clonar
 void clonar(){
 //   adaptação para system aceitar string em vez de char no system
-    std::string clon = "sudo dd if=/dev/" +hdant+ " of=/dev/"+hdnova+ " bs="+veloc+" conv=noerror,sync status=progress";
+    std::string clon = "sudo dd if=/dev/" +hdant+ " of=/dev/"+hdnova+ " bs="+veloc+" conv=noerror status=progress";
     std::cout<< clon;
     std::system(clon.c_str());
     std::cout<<"\n";
