@@ -1,6 +1,6 @@
 /*
 Clonar HD | SSD | Pendriver no linux
-Criado por Erasmo Cardodo
+Criado por Erasmo Cardoso
 */
 #include <iostream>
 #include <string.h>
