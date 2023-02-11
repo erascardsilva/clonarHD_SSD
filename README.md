@@ -1,4 +1,5 @@
-# clonarHD_SSD
+# "ClonarHD_SSD ver 1"
+'Aplicativo que roda no terminal linux escrito em C++ que faz a clonagem de partiçoes'
 
 executar no linux no terminal digite ./hd
 selecione nome da partiçao origem e destino
